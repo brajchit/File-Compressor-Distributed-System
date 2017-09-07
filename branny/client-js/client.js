@@ -10,9 +10,16 @@ if (args.length === 0) {
   console.log("Usage: js-client filename");
   process.exit(1);
 }
-
-amqp.connect('amqp://localhost', function(err, conn) {
+//var host = 'localhost'
+var host = '198.168.10.102'
+amqp.connect('amqp://192.168.10.102', function(err, conn) {
+  if(err){
+	console.log("conn: ", err)
+  }
   conn.createChannel(function(err, ch) {
+    if(err){
+	console.log("ch error: ", err)
+    }
     ch.assertQueue('', { exclusive: true }, function(err, q) {
       var corrId = uuidv4();
 
