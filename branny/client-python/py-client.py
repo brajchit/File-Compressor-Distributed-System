@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import pika
 import uuid
+import sys
 
 class compressClient(object):
 
@@ -41,12 +42,12 @@ class compressClient(object):
         return self.response
 
 compress_rpc = compressClient()
+file_path = sys.argv[1]
+print(" [x] Comprimiendo "+file_path)
 
-print(" [x] Comprimiendo video.mp4")
-response = compress_rpc.call("video.mp4")
+response = compress_rpc.call(file_path)
 print(" [.] Archivo comprimido en compFiles/file.zip")
-# filePath = "input.txt"
 
-open("compFiles/file.zip", 'w').write(response)
+# open("compFiles/file.zip", 'w').write(response)
 
 # print(response)
