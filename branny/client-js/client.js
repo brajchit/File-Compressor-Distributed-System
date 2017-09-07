@@ -10,9 +10,9 @@ if (args.length === 0) {
   console.log("Usage: js-client filename");
   process.exit(1);
 }
-//var host = 'localhost'
-var host = '198.168.10.102'
-amqp.connect('amqp://192.168.10.102', function(err, conn) {
+var host = 'localhost'
+// var host = '198.168.10.102'
+amqp.connect('amqp://'+host, function(err, conn) {
   if(err){
 	console.log("conn: ", err)
   }
